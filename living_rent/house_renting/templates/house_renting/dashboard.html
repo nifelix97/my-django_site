@@ -1,0 +1,56 @@
+{% extends 'house_renting/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+            {% if request.user.is_staff %}
+                <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="card">
+            <h3>{{ available_houses_count }}</h3>
+            <p>Available Houses</p>
+        </div>
+        <div class="card">
+            <h3>House Types</h3>
+            <ul>
+                {% for type in house_types %}
+                    <li>{{ type }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="house-list">
+            <h3>House Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Type</th>
+                        <th>Date Added</th>
+                        <th>Rent</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for house in houses %}
+                        <tr>
+                            <td>{{ house.address }}</td>
+                            <td>{{ house.house_type }}</td>
+                            <td>{{ house.date_added }}</td>
+                            <td>RWF {{ house.rent }}</td>
+                            <td>{{ house.available|yesno:"Yes,No" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

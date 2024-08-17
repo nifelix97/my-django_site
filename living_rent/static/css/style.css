@@ -1,0 +1,314 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #555;
+}
+
+header {
+    background: blueviolet;
+    color: black;
+    padding: 4em;
+    text-align: center;
+}
+
+.container {
+    margin-bottom: 100px;
+}
+
+nav {
+    padding: 1em;
+    font-size: x-large;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+footer {
+    background: blueviolet;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+    bottom: 0;
+}
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.messages li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.apply-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 130px;
+}
+
+.apply-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+.house-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.house-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.house-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background: #ecf0f1;
+    margin-bottom: 130px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.house-list {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 130px;
+}
+
+.house-list table {
+    width: 100%;
+    margin: 20px 0 100px;
+    border-collapse: collapse;
+}
+
+.house-list th, .house-list td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.house-list th {
+    background: #f4f4f4;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 80px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+}
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    text-decoration: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 576px) {
+    .whatsapp-button {
+        bottom: 50px;
+        right: 10px;
+        padding: 10px;
+        font-size: 50px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 577px) and (max-width: 768px) {
+    .whatsapp-button {
+        bottom: 70px;
+        right: 15px;
+        padding: 12px;
+        font-size: 60px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    .whatsapp-button {
+        bottom: 100px;
+        right: 20px;
+        padding: 15px;
+        font-size: 80px;
+    }
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    text-decoration: none;
+}
+
+.typing-container {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.typing-effect {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+/* Mobile Styles */
+@media (max-width: 576px) {
+    header {
+        padding: 2em;
+    }
+    .house-card {
+        padding: 10px;
+        margin: 10px;
+    }
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 577px) and (max-width: 768px) {
+    header {
+        padding: 3em;
+    }
+    .house-card {
+        padding: 15px;
+        margin: 15px;
+    }
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    header {
+        padding: 4em;
+    }
+    .house-card {
+        padding: 20px;
+        margin: 20px;
+    }
+    .sidebar {
+        width: 250px;
+        padding: 15px;
+    }
+    .main-content {
+        padding: 20px;
+    }
+}
+

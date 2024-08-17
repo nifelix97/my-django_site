@@ -1,0 +1,39 @@
+{% extends 'house_renting/base.html' %}
+{% load static %}
+{% block title %}Parcel Detail{% endblock %}
+{% block content %}
+<div class="parcel-card">
+    <h2>{{ parcel.address }}</h2>
+    <img src="{{ parcel.main_image.url }}" alt="Main parcel image">
+    <p>Size: {{ parcel.size }}</p>
+    <p>Location: {{ parcel.location }}</p>
+    <p>{{ parcel.description }}</p>
+    <p>Price: RWF {{ parcel.price }}</p>
+
+    <div class="additional-images mt-4">
+        <h3>Additional Images</h3>
+        <div class="row">
+            {% for image in images %}
+                <div class="col-md-4">
+                    <img src="{{ image.image.url }}" alt="Additional parcel image" class="img-fluid mb-3">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h3>Apply for this parcel</h3>
+    <form method="post" class="apply-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="apply-button">Apply</button>
+    </form>
+</div>
+{% endblock %}
