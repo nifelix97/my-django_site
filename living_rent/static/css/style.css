@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #555;
@@ -209,57 +210,6 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 576px) {
-    .whatsapp-button {
-        bottom: 50px;
-        right: 10px;
-        padding: 10px;
-        font-size: 50px;
-    }
-}
-
-/* Tablet Styles */
-@media (min-width: 577px) and (max-width: 768px) {
-    .whatsapp-button {
-        bottom: 70px;
-        right: 15px;
-        padding: 12px;
-        font-size: 60px;
-    }
-}
-
-/* Desktop Styles */
-@media (min-width: 769px) {
-    .whatsapp-button {
-        bottom: 100px;
-        right: 20px;
-        padding: 15px;
-        font-size: 80px;
-    }
-}
-
-.whatsapp-button:hover {
-    background-color: #128C7E;
-    text-decoration: none;
-}
-
-.typing-container {
-    overflow: hidden;
-    width: 100%;
-    text-align: center;
-}
-
-.typing-effect {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-/* Mobile Styles */
-@media (max-width: 576px) {
     header {
         padding: 2em;
     }
@@ -273,6 +223,12 @@ footer {
     }
     .main-content {
         padding: 10px;
+    }
+    .whatsapp-button {
+        bottom: 50px;
+        right: 10px;
+        padding: 10px;
+        font-size: 50px;
     }
 }
 
@@ -292,6 +248,12 @@ footer {
     .main-content {
         padding: 15px;
     }
+    .whatsapp-button {
+        bottom: 70px;
+        right: 15px;
+        padding: 12px;
+        font-size: 60px;
+    }
 }
 
 /* Desktop Styles */
@@ -310,5 +272,27 @@ footer {
     .main-content {
         padding: 20px;
     }
+    .whatsapp-button {
+        bottom: 100px;
+        right: 20px;
+        padding: 15px;
+        font-size: 80px;
+    }
 }
 
+.typing-container {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.typing-effect {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
