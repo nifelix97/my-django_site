@@ -98,7 +98,7 @@ footer {
     height: 300px; /* Increase the height of the image */
     object-fit: cover;
     width: 100%; /* Make the image full-width */
-  }
+}
 
 .dashboard {
     display: flex;
@@ -302,23 +302,24 @@ footer {
     from { width: 0 }
     to { width: 100% }
 }
+
 @media (max-width: 576px) {
     h1 {
       font-size: 1.2em; /* Adjust font size for small screens */
       white-space: normal; /* Allow text to wrap */
     }
-  }
+}
 
-  @media (max-width: 576px) {
+@media (max-width: 576px) {
     .dashboard {
       flex-direction: column; /* Stack the sidebar and main content on small screens */
     }
     .sidebar {
       width: 100%; /* Make the sidebar full-width on small screens */
     }
-  }
+}
 
-  .parcel-card {
+.parcel-card {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -326,41 +327,41 @@ footer {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .parcel-card:hover {
+}
+
+.parcel-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .parcel-card img {
+}
+
+.parcel-card img {
     max-width: 100%;
     border-radius: 10px;
-  }
+}
 
-  @media (max-width: 576px) {
+@media (max-width: 576px) {
     .parcel-card {
       padding: 10px;
       margin: 10px;
     }
-  }
-  
-  @media (min-width: 577px) and (max-width: 768px) {
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
     .parcel-card {
       padding: 15px;
       margin: 15px;
     }
-  }
-  
-  @media (min-width: 769px) {
+}
+
+@media (min-width: 769px) {
     .parcel-card {
       padding: 20px;
       margin: 20px;
     }
-  }
+}
 
-  .parcel-card img {
+.parcel-card img {
     height: 300px; /* Increase the height of the image */
     object-fit: cover;
     width: 100%; /* Make the image full-width */
-  }
+}
