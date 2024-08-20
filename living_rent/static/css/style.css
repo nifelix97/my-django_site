@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #555;
@@ -94,12 +95,14 @@ footer {
 }
 
 .house-card img {
-    max-width: 100%;
-    border-radius: 10px;
-}
+    height: 300px; /* Increase the height of the image */
+    object-fit: cover;
+    width: 100%; /* Make the image full-width */
+  }
 
 .dashboard {
     display: flex;
+    flex-wrap: wrap; /* Ensure the sidebar and main content wrap on small screens */
     min-height: 100vh;
 }
 
@@ -209,57 +212,6 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 576px) {
-    .whatsapp-button {
-        bottom: 50px;
-        right: 10px;
-        padding: 10px;
-        font-size: 50px;
-    }
-}
-
-/* Tablet Styles */
-@media (min-width: 577px) and (max-width: 768px) {
-    .whatsapp-button {
-        bottom: 70px;
-        right: 15px;
-        padding: 12px;
-        font-size: 60px;
-    }
-}
-
-/* Desktop Styles */
-@media (min-width: 769px) {
-    .whatsapp-button {
-        bottom: 100px;
-        right: 20px;
-        padding: 15px;
-        font-size: 80px;
-    }
-}
-
-.whatsapp-button:hover {
-    background-color: #128C7E;
-    text-decoration: none;
-}
-
-.typing-container {
-    overflow: hidden;
-    width: 100%;
-    text-align: center;
-}
-
-.typing-effect {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-/* Mobile Styles */
-@media (max-width: 576px) {
     header {
         padding: 2em;
     }
@@ -273,6 +225,16 @@ footer {
     }
     .main-content {
         padding: 10px;
+    }
+    .whatsapp-button {
+        bottom: 50px;
+        right: 10px;
+        padding: 10px;
+        font-size: 50px;
+    }
+    .typing-effect {
+        font-size: 1.5em; /* Adjust font size for small screens */
+        white-space: normal; /* Allow text to wrap */
     }
 }
 
@@ -292,6 +254,12 @@ footer {
     .main-content {
         padding: 15px;
     }
+    .whatsapp-button {
+        bottom: 70px;
+        right: 15px;
+        padding: 12px;
+        font-size: 60px;
+    }
 }
 
 /* Desktop Styles */
@@ -310,5 +278,89 @@ footer {
     .main-content {
         padding: 20px;
     }
+    .whatsapp-button {
+        bottom: 100px;
+        right: 20px;
+        padding: 15px;
+        font-size: 80px;
+    }
 }
 
+.typing-container {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.typing-effect {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@media (max-width: 576px) {
+    h1 {
+      font-size: 1.2em; /* Adjust font size for small screens */
+      white-space: normal; /* Allow text to wrap */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .dashboard {
+      flex-direction: column; /* Stack the sidebar and main content on small screens */
+    }
+    .sidebar {
+      width: 100%; /* Make the sidebar full-width on small screens */
+    }
+  }
+
+  .parcel-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .parcel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .parcel-card img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 576px) {
+    .parcel-card {
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+  
+  @media (min-width: 577px) and (max-width: 768px) {
+    .parcel-card {
+      padding: 15px;
+      margin: 15px;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .parcel-card {
+      padding: 20px;
+      margin: 20px;
+    }
+  }
+
+  .parcel-card img {
+    height: 300px; /* Increase the height of the image */
+    object-fit: cover;
+    width: 100%; /* Make the image full-width */
+  }
