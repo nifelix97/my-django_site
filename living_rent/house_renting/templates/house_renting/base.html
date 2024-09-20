@@ -10,18 +10,18 @@
 </head>
 <body style="background-color: #C0C0C0">
     <header>
-        <h1 id="typing-text" class="typing-effect">Welcome to house renting rent the house afordable to your account status</h1>
+        <h1 id="typing-text" class="typing-effect">Murakaza neza muri umutungo tunga inzu cg ikibanza kijyanye nuko mu mufuka wawe hahagaze</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li> 
+                <li><a href="{% url 'parcel_list' %}">Parcels</a></li>
+                {% if request.user.is_staff %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li> 
-            <li><a href="{% url 'parcel_list' %}">Parcels</a></li>
-            {% if request.user.is_staff %}
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-            {% endif %}
-        </ul>
-    </nav>
     <div>
         {% block content %}{% endblock %}
     </div>
@@ -31,8 +31,8 @@
         </a>
     </row>
     <footer>
-        <p>for more assissitance Contact us on: +123456789</p>
-        <p>© 2024 Living Rent. All rights reserved.</p>
+        <p>ku bundi bisobanuro duhamagare kuri : +250784107365</p>
+        <p>© 2024 Umutungo. All rights reserved.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

@@ -296,12 +296,19 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    display: block;
+    visibility: visible;
 }
 
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
 }
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+  }
 
 @media (max-width: 576px) {
     h1 {
