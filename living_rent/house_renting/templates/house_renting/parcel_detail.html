@@ -5,17 +5,17 @@
 <div class="parcel-card">
     <h2>{{ parcel.address }}</h2>
     <img src="{{ parcel.main_image.url }}" alt="Main parcel image">
-    <p>Size: {{ parcel.size }}</p>
-    <p>Location: {{ parcel.location }}</p>
+    <p>ubuso: {{ parcel.size }}km²</p>
+    <p>giherereye: {{ parcel.location }}</p>
     <p>{{ parcel.description }}</p>
-    <p>Price: RWF {{ parcel.price }}</p>
+    <p>igiciro: RWF {{ parcel.price }}</p>
 
     <div class="additional-images mt-4">
-        <h3>Additional Images</h3>
+        <h3>Andi mafoto</h3>
         <div class="row">
             {% for image in images %}
                 <div class="col-md-4">
-                    <img src="{{ image.image.url }}" alt="Additional parcel image" class="img-fluid mb-3">
+                    <img src="{{ image.image.url }}" alt="Additional parcel image" class="img-fluid mb-3 zoom">
                 </div>
             {% endfor %}
         </div>
@@ -29,11 +29,24 @@
         </ul>
     {% endif %}
 
-    <h3>Apply for this parcel</h3>
+    <h3>Saba ikibanza</h3>
     <form method="post" class="apply-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="apply-button">Apply</button>
+        <button type="submit" class="apply-button">ohereza</button>
     </form>
 </div>
+
+<!-- Add the JavaScript at the bottom of the file -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.additional-images img');
+
+    images.forEach(image => {
+        image.addEventListener('click', function() {
+            this.classList.toggle('zoomed');
+        });
+    });
+});
+</script>
 {% endblock %}

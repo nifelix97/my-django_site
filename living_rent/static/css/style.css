@@ -376,3 +376,18 @@ footer {
     object-fit: cover;
     width: 100%; /* Make the image full-width */
 }
+
+/* Zoom effect for additional images */
+.zoom {
+    transition: transform 0.2s; /* Animation */
+    cursor: pointer;
+}
+
+.zoomed {
+    transform: scale(2); /* Zoom in */
+    z-index: 1000; /* Ensure the image is on top */
+    position: relative;
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2);
+}
