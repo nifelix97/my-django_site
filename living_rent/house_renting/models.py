@@ -67,3 +67,34 @@ class ParcelApplication(models.Model):
 
     def __str__(self):
         return f'{self.user_name} - {self.parcel.address}'
+
+class Car(models.Model):
+    landlord = models.ForeignKey(Landlord, on_delete=models.CASCADE)
+    CarModel = models.CharField(max_length=255)
+    car_name = models.CharField(max_length=50)
+    available = models.BooleanField(default=True)
+    rent = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    sale_price = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    date_added = models.DateField(auto_now_add=True)
+    description = models.TextField(blank=True, null=True)
+    main_image = models.ImageField(upload_to='cars/main/')
+
+    def __str__(self):
+        return self.car_name
+
+class CarImage(models.Model):
+    car = models.ForeignKey(Car, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='cars/')
+
+    def __str__(self):
+        return f"{self.car.car_name} - Image"
+
+class CarApplication(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    user_email = models.EmailField()
+    user_contact_number = models.CharField(max_length=15)
+    message = models.TextField()
+
+    def __str__(self):
+        return f'{self.user_name} - {self.car.car_name}'

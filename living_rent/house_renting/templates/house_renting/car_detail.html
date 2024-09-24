@@ -1,0 +1,44 @@
+{% extends 'house_renting/base.html' %}
+
+{% block title %}Car Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ car.car_type }}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ car.main_image.url }}" class="img-fluid uniform-image zoom" alt="{{ car.car_type }}">
+            <div class="mt-3 additional-images">
+                {% for image in images %}
+                    <img src="{{ image.image.url }}" class="img-thumbnail uniform-image zoom" alt="{{ car.car_type }}">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Details</h3>
+            <p>{{ car.description }}</p>
+            <p><strong>Izina:</strong> {{ car.car_name }}</p>
+            <p><strong>ikodeshwa:</strong> RWF {{ car.rent }}</p>
+            <p><strong>Model:</strong> {{ car.CarModel }}</p>
+            <p><strong>Available:</strong> {{ car.available|yesno:"Yes,No" }}</p>
+            <h3>Apply</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.zoom');
+    
+        images.forEach(image => {
+            image.addEventListener('click', function() {
+                this.classList.toggle('zoomed');
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -391,3 +391,16 @@ footer {
     top: 50%;
     transform: translate(-50%, -50%) scale(2);
 }
+
+.uniform-image {
+    height: 300px; /* Set the desired height */
+    width: 300px;  /* Set the desired width */
+    object-fit: cover; /* Ensure the image covers the area */
+    margin: 5px; /* Add some margin between images */
+}
+
+.narrow-form {
+    max-width: 650px; /* Set the desired width */
+    margin-left: 0; /* Align to the left */
+    margin-right: auto; /* Add space on the right */
+}

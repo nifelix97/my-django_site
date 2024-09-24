@@ -15,8 +15,8 @@
     </div>
     <div class="main-content">
         <div class="card">
-            <h3>{{ available_houses_count }}</h3>
             <p>inzu zihari</p>
+            <h3>{{ available_houses_count }}</h3>
         </div>
         <div class="card">
             <h3>ubwoko bwinzu</h3>
@@ -52,8 +52,9 @@
             </table>
         </div>
         <div class="card">
-            <h3>{{ parcel_count }}</h3>
             <p>ibibanza bihari</p>
+            <h3>{{ parcel_count }}</h3>
+            
         </div>
         <div class="house-list">
             <h3>amakuru ku kibanza</h3>
@@ -75,6 +76,38 @@
                             <td>{{ parcel.location }}</td>
                             <td>RWF {{ parcel.price }}</td>
                             <td>{{ parcel.available|yesno:"Yes,No" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <p>imodoka zihari</p>
+            <h3>{{ car_count }}</h3>
+            
+        </div>
+        <div class="house-list">
+            <h3>amakuru ku modoka</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>aho iri</th>
+                        <th>ubwoko</th>
+                        <th>igihe yashyiriwe ku isoko</th>
+                        <th>ikiguzi cyo kuyikodesha</th>
+                        <th>ikiguzi cyo kuyigura</th>
+                        <th>irahari</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for car in cars %}
+                        <tr>
+                            <td>{{ car.address }}</td>
+                            <td>{{ car.car_type }}</td>
+                            <td>{{ car.date_added }}</td>
+                            <td>RWF {{ car.rent }}</td>
+                            <td>RWF {{ car.sale_price }}</td>
+                            <td>{{ car.available|yesno:"Yes,No" }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

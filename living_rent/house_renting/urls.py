@@ -10,6 +10,9 @@ urlpatterns = [
     path('house/<int:pk>/', views.house_detail, name='house_detail'),
     path('parcels/', views.parcel_list, name='parcel_list'),
     path('parcel/<int:pk>/', views.parcel_detail, name='parcel_detail'),
+    path('cars_for_rent/', views.cars_for_rent, name='cars_for_rent'),
+    path('cars_for_sale/', views.cars_for_sale, name='cars_for_sale'),
+    path('car/<int:pk>/', views.car_detail, name='car_detail'),
 ]
 
 if settings.DEBUG:

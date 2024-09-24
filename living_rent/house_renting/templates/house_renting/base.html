@@ -16,6 +16,8 @@
                 <li><a href="{% url 'home' %}">Ahabanza</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li> 
                 <li><a href="{% url 'parcel_list' %}">ibibanza</a></li>
+                <li><a href="{% url 'cars_for_rent' %}">Imodoka zo gukodesha</a></li>
+                <li><a href="{% url 'cars_for_sale' %}">Imodoka zo kugura</a></li>
                 {% if request.user.is_staff %}
                     <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                 {% endif %}

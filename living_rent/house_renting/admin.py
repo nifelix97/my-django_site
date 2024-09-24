@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Landlord, House, HouseImage, StudentApplication, Parcel, ParcelImage, ParcelApplication
+from .models import Landlord, House, HouseImage, StudentApplication, Parcel, ParcelImage, ParcelApplication, Car, CarImage, CarApplication
 
 class HouseImageInline(admin.TabularInline):
     model = HouseImage
@@ -13,9 +13,18 @@ class ParcelImageInline(admin.TabularInline):
 class ParcelAdmin(admin.ModelAdmin):
     inlines = [ParcelImageInline]
 
+class CarImageInline(admin.TabularInline):
+    model = CarImage
+    extra = 1
+
+class CarAdmin(admin.ModelAdmin):
+    inlines = [CarImageInline]
+
 admin.site.register(Landlord)
 admin.site.register(House, HouseAdmin)
 admin.site.register(StudentApplication)
 admin.site.register(Parcel, ParcelAdmin)
 admin.site.register(ParcelApplication)
+admin.site.register(Car, CarAdmin)
+admin.site.register(CarApplication)
 
