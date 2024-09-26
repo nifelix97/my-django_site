@@ -30,15 +30,27 @@
         </ul>
     {% endif %}
 
-    <h3>Saba inzu</h3>
-    <form method="post" class="apply-form narrow-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="apply-button">ohereza</button>
-    </form>
+    <div class="form-and-video-container">
+        <div class="apply-form narrow-form">
+            <h3>Saba inzu</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="apply-button">ohereza</button>
+            </form>
+        </div>
+        {% if house.video %}
+        <div class="video-container">
+            <h3>Video</h3>
+            <video controls>
+                <source src="{{ house.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+    </div>
 </div>
 
-<!-- Add the JavaScript at the bottom of the file -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.additional-images img');

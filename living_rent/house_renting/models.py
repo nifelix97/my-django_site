@@ -19,6 +19,7 @@ class House(models.Model):
     date_added = models.DateField(auto_now_add=True)  # Remove default here
     description = models.TextField(blank=True, null=True)
     main_image = models.ImageField(upload_to='houses/main/')
+    video = models.FileField(upload_to='houses/videos/', blank=True, null=True)
 
     def __str__(self):
         return self.address
@@ -47,6 +48,7 @@ class Parcel(models.Model):
     price = models.DecimalField(max_digits=14, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     main_image = models.ImageField(upload_to='parcels/main/')
+    video = models.FileField(upload_to='parcels/videos/', blank=True, null=True)
 
     def __str__(self):
         return self.address
@@ -78,6 +80,7 @@ class Car(models.Model):
     date_added = models.DateField(auto_now_add=True)
     description = models.TextField(blank=True, null=True)
     main_image = models.ImageField(upload_to='cars/main/')
+    video = models.FileField(upload_to='cars/videos/', blank=True, null=True)
 
     def __str__(self):
         return self.car_name
