@@ -7,12 +7,12 @@
 <div class="house-card">
     <h2>{{ house.address }}</h2>
     <img src="{{ house.main_image.url }}" alt="Main house image">
-    <p>ubwoko: {{ house.house_type }}</p>
+    <p>Type: {{ house.house_type }}</p>
     <p>{{ house.description }}</p>  <!-- Display the description -->
-    <p>igiciro: RWF {{ house.rent }}</p>
+    <p>Price: RWF {{ house.rent }}</p>
 
     <div class="additional-images mt-4">
-        <h3>Andi mafoto</h3>
+        <h3>Additional Images</h3>
         <div class="row">
             {% for image in images %}
                 <div class="col-md-4">
@@ -32,11 +32,11 @@
 
     <div class="form-and-video-container">
         <div class="apply-form narrow-form">
-            <h3>Saba inzu</h3>
+            <h3>Apply for House</h3>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="apply-button">ohereza</button>
+                <button type="submit" class="apply-button">Submit</button>
             </form>
         </div>
         {% if house.video %}

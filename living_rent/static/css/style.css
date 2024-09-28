@@ -4,10 +4,64 @@ body {
     background-color: #555;
 }
 
-header {
-    background: blueviolet;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(154, 204, 235);
     color: black;
-    padding: 4em;
+    padding: 0.5em 1em; /* Adjust padding as needed */
+    border-bottom: 5px solid white; /* Adds a white border at the bottom */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px; /* Adjust the height as needed */
+    margin-right: 10px;
+}
+
+.company-name {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+.horizontal-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scroll ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox to make the list items horizontal */
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.horizontal-scroll ul li {
+    margin-left: 1em; /* Add space between the list items */
+}
+
+.horizontal-scroll ul li a {
+    text-decoration: none;
+    color: black; /* Set text color for links */
+    padding: 0.5em 1em;
+    display: block;
+}
+
+.horizontal-scroll ul li a:hover {
+    color: #007bff; /* Optional: Change color on hover */
+}
+
+
+header {
+    background: rgb(154, 204, 235);
+    color: black;
+    padding: 0.5em;
     text-align: center;
 }
 
@@ -18,20 +72,34 @@ header {
 nav {
     padding: 1em;
     font-size: x-large;
+    color: black;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex; 
+    justify-content: flex-end;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 1em;
+    margin-left: 1em; /* Add space between the list items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black; /* Set text color for links */
+    padding: 0.5em 1em;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: #007bff; /* Optional: Change color on hover */
 }
 
 footer {
-    background: blueviolet;
+    background: rgb(154, 204, 235);;
     color: #fff;
     text-align: center;
     padding: 1em;
@@ -237,7 +305,7 @@ footer {
         font-size: 50px;
     }
     .typing-effect {
-        font-size: 1.5em; /* Adjust font size for small screens */
+        font-size: 1.2em; /* Adjust font size for small screens */
         white-space: normal; /* Allow text to wrap */
     }
     .horizontal-scroll {
@@ -324,6 +392,7 @@ footer {
     animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
     display: block;
     visibility: visible;
+    font-size: 30px;
 }
 
 @keyframes typing {

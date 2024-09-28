@@ -17,8 +17,13 @@
         <div class="col-md-4">
             <h3>Details</h3>
             <p>{{ car.description }}</p>
-            <p><strong>Izina:</strong> {{ car.car_name }}</p>
-            <p><strong>ikodeshwa:</strong> RWF {{ car.rent }}</p>
+            <p><strong>Name:</strong> {{ car.car_name }}</p>
+            {% if car.rent %}
+                <p><strong>For Rent:</strong> RWF {{ car.rent }}</p>
+            {% endif %}
+            {% if car.sale_price %}
+                <p><strong>For Sale:</strong> RWF {{ car.sale_price }}</p>
+            {% endif %}
             <p><strong>Model:</strong> {{ car.CarModel }}</p>
             <p><strong>Available:</strong> {{ car.available|yesno:"Yes,No" }}</p>
             <h3>Apply</h3>
