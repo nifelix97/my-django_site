@@ -11,8 +11,8 @@
 <body style="background-color: #C0C0C0">
     <div class="navbar">
         <div class="logo-container">
-            <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="logo">
-            <span class="company-name">Prime Property</span>
+            <img src="{% static 'images/logo.webp' %}" alt="Company Logo" class="logo">
+            <span class="company-name">Prime<br>Property</span>
         </div>
         <nav class="horizontal-scroll">
             <ul>
@@ -36,12 +36,22 @@
             <i class="fab fa-whatsapp"></i>
         </a>
     </row>
-    <footer>
-        <p>For more information, call us at: +250784107365</p>
-        <p>© 2024 Living Rent. All rights reserved.</p>
-        <div id="google_translate_element"></div>
-        <button id="translate-button" class="btn btn-secondary">Translate to Kinyarwanda</button>
-    </footer>
+        <div class="footer">
+            <div class="socialmedia">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook social-icon facebook-icon"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter social-icon twitter-icon"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram social-icon instagram-icon"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin social-icon linkedin-icon"></i></a>
+            </div>
+            <div class="information"><p>For more information, call us at: +250784107365</p>
+                <p>© 2024 Living Rent. All rights reserved.</p>
+            </div>
+            <div class="translation">
+                <div id="google_translate_element"></div>
+                <button id="translate-button" class="btn btn-secondary custom-height">Translate to Kinyarwanda</button>
+            </div>
+        </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

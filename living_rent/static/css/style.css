@@ -20,13 +20,16 @@ body {
 }
 
 .logo {
-    height: 40px; /* Adjust the height as needed */
+    height: 60px; /* Adjust the height as needed */
     margin-right: 10px;
+    border-radius: 200px;
+    
 }
 
 .company-name {
-    font-size: 1.5em; /* Adjust the font size as needed */
+    font-size: 1.2em; /* Adjust the font size as needed */
     font-weight: bold;
+    justify-content: space-between;
 }
 
 .horizontal-scroll {
@@ -51,6 +54,7 @@ body {
     color: black; /* Set text color for links */
     padding: 0.5em 1em;
     display: block;
+    font-size: 15px; /* Adjust font size as needed */
 }
 
 .horizontal-scroll ul li a:hover {
@@ -98,13 +102,40 @@ nav ul li a:hover {
     color: #007bff; /* Optional: Change color on hover */
 }
 
-footer {
+.footer {
+    justify-content: space-between;
+    display: flex;
+    align-items: left;
     background: rgb(154, 204, 235);;
     color: #fff;
     text-align: center;
     padding: 1em;
     width: 100%;
     bottom: 0;
+}
+
+.social-icon {
+    font-size: 40px; /* Adjust the size as needed */
+    margin: 0 10px; /* Optional: Add some space between the icons */
+}
+
+.facebook-icon {
+    color: #3b5998; /* Facebook blue */
+}
+
+.twitter-icon {
+    color: #1da1f2; /* Twitter blue */
+}
+
+.instagram-icon {
+    color: #e1306c; /* Instagram pink */
+}
+.linkedin-icon {
+    color: #0077b5; /* LinkedIn blue */
+}
+
+.custom-height {
+    height: 30px; /* Adjust the height as needed */
 }
 
 .messages {
