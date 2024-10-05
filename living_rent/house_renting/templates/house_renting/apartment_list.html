@@ -1,0 +1,9 @@
+{% extends "house_renting/base.html" %}
+{% block content %}
+<h1>Apartment List</h1>
+<ul>
+    {% for apartment in apartments %}
+    <li><a href="{% url 'apartment_detail' apartment.pk %}">{{ apartment.address }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

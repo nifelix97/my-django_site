@@ -4,9 +4,55 @@ body {
     background-color: #555;
 }
 
+.navbar, .container, body {
+    overflow: visible;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position the dropdown below the button */
+    left: 0;
+    z-index: 1050;
+    display: none; /* Hide the dropdown by default */
+    float: left;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown when hovering over the button */
+}
+
+.properties-button {
+    background: rgb(154, 204, 235); /* Match the header color */
+    border: none;
+    color: black;
+    padding: 0.5em 1em;
+    font-size: 15px;
+}
+
+.properties-button:hover {
+    background: #007bff; /* Optional: Change color on hover */
+    color: white;
+}
+
 .navbar {
     display: flex;
     align-items: center;
+    z-index: 999;
     justify-content: space-between;
     background: rgb(154, 204, 235);
     color: black;

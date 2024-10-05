@@ -1,0 +1,9 @@
+{% extends "house_renting/base.html" %}
+{% block content %}
+<h1>Office List</h1>
+<ul>
+    {% for office in offices %}
+    <li>{{ office.address }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

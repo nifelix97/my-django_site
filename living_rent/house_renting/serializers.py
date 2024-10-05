@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Landlord, House, HouseImage, StudentApplication, Parcel, ParcelImage, ParcelApplication, Car, CarImage, CarApplication
+from .models import Landlord, House, HouseImage, StudentApplication, Parcel, ParcelImage, ParcelApplication, Car, CarImage, CarApplication,Apartment
 
 class LandlordSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,4 +49,9 @@ class CarImageSerializer(serializers.ModelSerializer):
 class CarApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CarApplication
+        fields = '__all__'
+
+class ApartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Apartment
         fields = '__all__'

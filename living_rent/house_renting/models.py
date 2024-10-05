@@ -101,3 +101,22 @@ class CarApplication(models.Model):
 
     def __str__(self):
         return f'{self.user_name} - {self.car.car_name}'
+
+class Apartment(models.Model):
+    TYPE_CHOICES = [
+        ('APARTMENT', 'Apartment'),
+        ('OFFICE', 'Office'),
+    ]
+    
+    landlord = models.ForeignKey(Landlord, on_delete=models.CASCADE)
+    address = models.CharField(max_length=255)
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='APARTMENT')
+    available = models.BooleanField(default=True)
+    rent = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    date_added = models.DateField(auto_now_add=True)
+    description = models.TextField(blank=True, null=True)
+    main_image = models.ImageField(upload_to='apartments/main/')
+    video = models.FileField(upload_to='apartments/videos/', blank=True, null=True)
+
+    def __str__(self):
+        return self.address

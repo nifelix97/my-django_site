@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from .models import House, StudentApplication,Parcel, Car, CarApplication
-from .forms import StudentApplicationForm,ParcelApplicationForm,ParcelApplication, CarApplicationForm
+from .models import House, StudentApplication,Parcel, Car, CarApplication,Apartment
+from .forms import StudentApplicationForm,ParcelApplicationForm,ParcelApplication, CarApplicationForm,ApartmentForm
 
 
 def home(request):
@@ -111,3 +111,27 @@ def car_detail(request, pk):
         'images': images,
         'form': form
     })
+
+
+def apartment_list(request):
+    apartments = Apartment.objects.all()
+    return render(request, 'house_renting/apartment_list.html', {'apartments': apartments})
+
+def apartment_detail(request, pk):
+    apartment = get_object_or_404(Apartment, pk=pk)
+    if request.method == 'POST':
+        form = ApartmentForm(request.POST, request.FILES, instance=apartment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Apartment details updated successfully!')
+            return redirect('apartment_detail', pk=pk)
+    else:
+        form = ApartmentForm(instance=apartment)
+    return render(request, 'house_renting/apartment_detail.html', {
+        'apartment': apartment,
+        'form': form
+    })
+
+def office_list(request):
+    offices = Apartment.objects.filter(type='OFFICE')
+    return render(request, 'house_renting/office_list.html', {'offices': offices})

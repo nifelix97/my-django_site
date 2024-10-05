@@ -1,5 +1,5 @@
 from django import forms
-from .models import StudentApplication,ParcelApplication,CarApplication
+from .models import StudentApplication,ParcelApplication,CarApplication,Apartment
 
 class StudentApplicationForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class CarApplicationForm(forms.ModelForm):
     class Meta:
         model = CarApplication
         fields = ['user_name', 'user_email', 'message', 'user_contact_number']
+
+class ApartmentForm(forms.ModelForm):
+    class Meta:
+        model = Apartment
+        fields = ['landlord', 'address', 'type', 'available', 'rent', 'description', 'main_image', 'video']
