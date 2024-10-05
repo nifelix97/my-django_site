@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body style="background-color: #C0C0C0">
+<body style="background-color: #ffffff">
     <div class="navbar">
         <div class="logo-container">
             <img src="{% static 'images/logo.webp' %}" alt="Company Logo" class="logo">
@@ -22,7 +22,7 @@
                 <li><a href="{% url 'cars_for_rent' %}">Cars for Rent</a></li>
                 <li><a href="{% url 'cars_for_sale' %}">Cars for Sale</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle properties-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Properties
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,5 +99,44 @@
             });
         });
     </script>
+<!-- Include jQuery (if not already included) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    var originalParent;
+
+    // Hide any visible dropdown menus on page load
+    $('.dropdown-menu').hide();
+
+    $('.dropdown-toggle').on('click', function(e) {
+        e.preventDefault();
+        var $dropdownMenu = $(this).next('.dropdown-menu');
+        if ($dropdownMenu.is(':visible')) {
+            $dropdownMenu.hide().appendTo(originalParent);
+        } else {
+            $('.dropdown-menu').hide().each(function() {
+                $(this).appendTo(originalParent);
+            }); // Hide any open dropdowns and reattach them to their original parent
+            originalParent = $dropdownMenu.parent();
+            $dropdownMenu.css({
+                position: 'absolute',
+                top: $(this).offset().top + $(this).outerHeight(),
+                left: $(this).offset().left,
+                display: 'block'
+            }).appendTo('body');
+        }
+    });
+
+    // Hide dropdown menu when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').hide().each(function() {
+                $(this).appendTo(originalParent);
+            });
+        }
+    });
+});
+</script>
 </body>
 </html>

@@ -1,17 +1,16 @@
 /* Base Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #555;
+    background-color: #ffffff;
 }
 
-.navbar, .container, body {
-    overflow: visible;
-}
 
+/* Ensure the dropdown container is positioned relative */
 .dropdown {
     position: relative;
 }
 
+/* Adjust the dropdown menu positioning */
 .dropdown-menu {
     position: absolute;
     top: 100%; /* Position the dropdown below the button */
@@ -32,6 +31,7 @@ body {
     border-radius: 0.25rem;
 }
 
+/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-menu {
     display: block; /* Show the dropdown when hovering over the button */
 }
