@@ -10,10 +10,14 @@
 </head>
 <body style="background-color: #ffffff">
     <div class="navbar">
+        <button id="menu-icon" class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </button>
         <div class="logo-container">
             <img src="{% static 'images/logo.webp' %}" alt="Company Logo" class="logo">
             <span class="company-name">Prime<br>Property</span>
         </div>
+        <div id="sidebar" class="sidebar"></div>
         <nav class="horizontal-scroll">
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
@@ -136,6 +140,18 @@ $(document).ready(function() {
             });
         }
     });
+});
+
+document.getElementById('menu-icon').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.toggle('open');
+});
+
+document.addEventListener('click', function(event) {
+    var sidebar = document.getElementById('sidebar');
+    var menuIcon = document.getElementById('menu-icon');
+    if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+        sidebar.classList.remove('open');
+    }
 });
 </script>
 </body>

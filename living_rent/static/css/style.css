@@ -63,6 +63,7 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
+    margin-left: 30px;
 }
 
 .logo {
@@ -601,4 +602,32 @@ nav ul li a:hover {
 .video-container video {
     width: 100%;
     height: auto;
+}
+
+/* Add these styles to your existing CSS file */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 5px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    left: -260px;
+    border-radius: 10px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+}
+
+.sidebar.open {
+    left: 0;
 }
