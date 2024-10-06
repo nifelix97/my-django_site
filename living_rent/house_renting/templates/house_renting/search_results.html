@@ -1,0 +1,80 @@
+{% extends 'house_renting/base.html' %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Search Results for "{{ query }}"</h2>
+    <div class="row">
+        {% for house in houses %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="house-card">
+                    <a href="{% url 'house_detail' house.pk %}">
+                        <img src="{{ house.main_image.url }}" alt="House image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ house.address }}</h5>
+                        <p class="card-text">{{ house.house_type }}</p>
+                        <a href="{% url 'house_detail' house.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for apartment in apartments %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="house-card">
+                    <a href="{% url 'apartment_detail' apartment.pk %}">
+                        <img src="{{ apartment.main_image.url }}" alt="Apartment image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ apartment.address }}</h5>
+                        <p class="card-text">{{ apartment.apartment_type }}</p>
+                        <a href="{% url 'apartment_detail' apartment.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for office in offices %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="house-card">
+                    <a href="{% url 'office_detail' office.pk %}">
+                        <img src="{{ office.main_image.url }}" alt="Office image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ office.address }}</h5>
+                        <p class="card-text">{{ office.office_type }}</p>
+                        <a href="{% url 'office_detail' office.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for parcel in parcels %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="parcel-card">
+                    <a href="{% url 'parcel_detail' parcel.pk %}">
+                        <img src="{{ parcel.main_image.url }}" alt="Parcel image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ parcel.address }}</h5>
+                        <p class="card-text">{{ parcel.location }}</p>
+                        <p class="card-text">Price: RWF {{ parcel.price }}</p>
+                        <a href="{% url 'parcel_detail' parcel.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for car in cars %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="car-card">
+                    <a href="{% url 'car_detail' car.pk %}">
+                        <img src="{{ car.main_image.url }}" alt="Car image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.car_name }}</h5>
+                        <p class="card-text">{{ car.description }}</p>
+                        <a href="{% url 'car_detail' car.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

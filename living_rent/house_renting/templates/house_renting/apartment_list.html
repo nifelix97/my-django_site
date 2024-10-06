@@ -1,9 +1,24 @@
 {% extends "house_renting/base.html" %}
+{% load static %}
+{% block title %}Apartment List{% endblock %}
 {% block content %}
-<h1>Apartment List</h1>
-<ul>
-    {% for apartment in apartments %}
-    <li><a href="{% url 'apartment_detail' apartment.pk %}">{{ apartment.address }}</a></li>
-    {% endfor %}
-</ul>
+<div class="container mt-4 homepage-container">
+    <h2 class="text-center mb-4">Available Apartments</h2>
+    <div class="row">
+        {% for apartment in apartments %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="house-card">
+                    <a href="{% url 'apartment_detail' apartment.pk %}">
+                        <img src="{{ apartment.main_image.url }}" alt="Apartment image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ apartment.address }}</h5>
+                        <p class="card-text">{{ apartment.apartment_type }}</p>
+                        <a href="{% url 'apartment_detail' apartment.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -1,9 +1,24 @@
 {% extends "house_renting/base.html" %}
+{% load static %}
+{% block title %}Office List{% endblock %}
 {% block content %}
-<h1>Office List</h1>
-<ul>
-    {% for office in offices %}
-    <li>{{ office.address }}</li>
-    {% endfor %}
-</ul>
+<div class="container mt-4 homepage-container">
+    <h2 class="text-center mb-4">Available Offices</h2>
+    <div class="row">
+        {% for office in offices %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="house-card">
+                    <a href="{% url 'office_detail' office.pk %}">
+                        <img src="{{ office.main_image.url }}" alt="Office image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ office.address }}</h5>
+                        <p class="card-text">{{ office.office_type }}</p>
+                        <a href="{% url 'office_detail' office.pk %}" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

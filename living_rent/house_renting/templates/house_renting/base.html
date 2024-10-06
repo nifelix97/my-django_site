@@ -17,8 +17,7 @@
             <img src="{% static 'images/logo.webp' %}" alt="Company Logo" class="logo">
             <span class="company-name">Prime<br>Property</span>
         </div>
-        <div id="sidebar" class="sidebar"></div>
-        <nav class="horizontal-scroll">
+        <div id="sidebar" class="sidebar">
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'contact' %}">About us</a></li>
@@ -27,7 +26,7 @@
                 <li><a href="{% url 'cars_for_sale' %}">Cars for Sale</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Properties
+                        Apartments & Offices
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'apartment_list' %}">Apartments</a>
@@ -37,6 +36,24 @@
                 {% if request.user.is_staff %}
                     <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                 {% endif %}
+            </ul>
+        </div>
+        <nav class="horizontal-scroll">
+            <ul>
+                <li>
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+                <li>
+                    <a href="{% url 'notifications' %}" id="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        {% if unread_notifications_count > 0 %}
+                            <span class="badge">{{ unread_notifications_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

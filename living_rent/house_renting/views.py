@@ -1,9 +1,38 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.db.models import Q
 from django.contrib.auth.decorators import user_passes_test
-from .models import House, StudentApplication,Parcel, Car, CarApplication,Apartment
-from .forms import StudentApplicationForm,ParcelApplicationForm,ParcelApplication, CarApplicationForm,ApartmentForm
+from .models import House, StudentApplication, Parcel, Car, CarApplication, Apartment, Notification
+from .forms import StudentApplicationForm, ParcelApplicationForm, ParcelApplication, CarApplicationForm, ApartmentForm
 
+def create_notification(message):
+    Notification.objects.create(message=message)
+
+def notifications(request):
+    notifications = Notification.objects.all().order_by('-created_at')
+    Notification.objects.filter(is_read=False).update(is_read=True)
+    return render(request, 'house_renting/notifications.html', {'notifications': notifications})
+
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        houses = House.objects.filter(Q(address__icontains=query) | Q(description__icontains=query))
+        apartments = Apartment.objects.filter(Q(address__icontains=query) | Q(description__icontains=query))
+        offices = Apartment.objects.filter(type='OFFICE').filter(Q(address__icontains=query) | Q(description__icontains=query))
+        parcels = Parcel.objects.filter(Q(address__icontains=query) | Q(description__icontains=query))
+        cars = Car.objects.filter(Q(car_name__icontains=query) | Q(description__icontains=query))
+    else:
+        houses = apartments = offices = parcels = cars = []
+
+    context = {
+        'houses': houses,
+        'apartments': apartments,
+        'offices': offices,
+        'parcels': parcels,
+        'cars': cars,
+        'query': query,
+    }
+    return render(request, 'house_renting/search_results.html', context)
 
 def home(request):
     houses = House.objects.filter(available=True)
@@ -15,7 +44,7 @@ def dashboard(request):
     available_houses_count = houses.filter(available=True).count()
     house_types = houses.values_list('house_type', flat=True).distinct()
     parcels = Parcel.objects.all()
-    parcel_count = parcels.count()  # Define parcel_count variable
+    parcel_count = parcels.count()
     cars = Car.objects.all()
     car_count = cars.count()
     return render(request, 'house_renting/dashboard.html', {
@@ -30,20 +59,22 @@ def dashboard(request):
 
 def parcel_list(request):
     parcels = Parcel.objects.all()
-    parcel_count = parcels.count()  # Count the number of parcels
+    parcel_count = parcels.count()
     return render(request, 'house_renting/parcel_list.html', {
         'parcels': parcels,
-        'parcel_count': parcel_count  # Pass the count to the template
+        'parcel_count': parcel_count
     })
+
 def house_detail(request, pk):
     house = get_object_or_404(House, pk=pk)
-    images = house.images.all()  # Get all related images
+    images = house.images.all()
     if request.method == 'POST':
         form = StudentApplicationForm(request.POST)
         if form.is_valid():
             application = form.save(commit=False)
             application.house = house
             application.save()
+            create_notification(f"New application for house: {house.address}")
             messages.success(request, 'Your application has been submitted successfully!')
             return redirect('house_detail', pk=pk)
     else:
@@ -53,7 +84,6 @@ def house_detail(request, pk):
         'images': images,
         'form': form
     })
-
 
 def contact(request):
     return render(request, 'house_renting/contact.html')
@@ -71,6 +101,7 @@ def parcel_detail(request, pk):
             application = form.save(commit=False)
             application.parcel = parcel
             application.save()
+            create_notification(f"New application for parcel: {parcel.address}")
             messages.success(request, 'Your application has been submitted successfully!')
             return redirect('parcel_detail', pk=pk)
     else:
@@ -102,6 +133,7 @@ def car_detail(request, pk):
             application = form.save(commit=False)
             application.car = car
             application.save()
+            create_notification(f"New application for car: {car.car_name}")
             messages.success(request, 'Your application has been submitted successfully!')
             return redirect('car_detail', pk=pk)
     else:
@@ -111,7 +143,6 @@ def car_detail(request, pk):
         'images': images,
         'form': form
     })
-
 
 def apartment_list(request):
     apartments = Apartment.objects.all()

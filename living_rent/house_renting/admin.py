@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .models import Notification
 from .models import Landlord, House, HouseImage, StudentApplication, Parcel, ParcelImage, ParcelApplication, Car, CarImage, CarApplication,Apartment
 
 class HouseImageInline(admin.TabularInline):
@@ -19,6 +20,13 @@ class CarImageInline(admin.TabularInline):
 
 class CarAdmin(admin.ModelAdmin):
     inlines = [CarImageInline]
+
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('message', 'created_at', 'is_read')
+    list_filter = ('is_read',)
+    search_fields = ('message',)
+
+admin.site.register(Notification, NotificationAdmin)
 
 admin.site.register(Landlord)
 admin.site.register(House, HouseAdmin)

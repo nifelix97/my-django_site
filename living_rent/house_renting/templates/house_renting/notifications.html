@@ -1,0 +1,15 @@
+{% extends 'house_renting/base.html' %}
+{% block title %}Notifications{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Notifications</h2>
+    <ul class="list-group">
+        {% for notification in notifications %}
+            <li class="list-group-item {% if not notification.is_read %}list-group-item-info{% endif %}">
+                {{ notification.message }}
+                <span class="float-right">{{ notification.created_at }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
