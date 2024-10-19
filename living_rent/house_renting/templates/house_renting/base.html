@@ -14,7 +14,9 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="logo-container">
+            <a href="{% url 'property_list' %}">
             <img src="{% static 'images/logo.webp' %}" alt="Company Logo" class="logo">
+            </a>
             <span class="company-name">Prime<br>Property</span>
         </div>
         <div id="sidebar" class="sidebar">
@@ -22,13 +24,20 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'contact' %}">About us</a></li>
                 <li><a href="{% url 'parcel_list' %}">Plots</a></li>
-                <li><a href="{% url 'cars_for_rent' %}">Cars for Rent</a></li>
-                <li><a href="{% url 'cars_for_sale' %}">Cars for Sale</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="carsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cars
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="carsDropdown">
+                        <a class="dropdown-item" href="{% url 'cars_for_rent' %}">Cars for Rent</a>
+                        <a class="dropdown-item" href="{% url 'cars_for_sale' %}">Cars for Sale</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="apartmentsOfficesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Apartments & Offices
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="apartmentsOfficesDropdown">
                         <a class="dropdown-item" href="{% url 'apartment_list' %}">Apartments</a>
                         <a class="dropdown-item" href="{% url 'office_list' %}">Offices</a>
                     </div>
@@ -40,20 +49,26 @@
         </div>
         <nav class="horizontal-scroll">
             <ul>
+                <li><a href="{% url 'property_list' %}">Home</a></li>
+                <li><a href="{% url 'contact' %}">About us</a></li>
+                {% if request.user.is_staff %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li>
+                        <a href="{% url 'notifications' %}" id="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            {% if unread_notifications_count > 0 %}
+                                <span class="badge">{{ unread_notifications_count }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endif %}
                 <li>
                     <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </li>
-                <li>
-                    <a href="{% url 'notifications' %}" id="notification-icon">
-                        <i class="fas fa-bell"></i>
-                        {% if unread_notifications_count > 0 %}
-                            <span class="badge">{{ unread_notifications_count }}</span>
-                        {% endif %}
-                    </a>
-                </li>
+                
             </ul>
         </nav>
     </div>
@@ -87,20 +102,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            const text = "Welcome to Prime Property, find the perfect house, plot, car, or apartment to buy or rent within your budget";
-            let i = 0;
-            const speed = 60; // Speed of typing
-            
-            function typeWriter() {
-                if (i < text.length) {
-                    document.getElementById("typing-text").innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, speed);
-                }
-            }
-            document.getElementById("typing-text").innerHTML = "";
-            typeWriter();
-        });
+    const text = "Welcome to Prime Property, find the perfect house, plot, car, or apartment to buy or rent within your budget";
+    let i = 0;
+    const speed = 60; // Speed of typing
+    
+    function typeWriter() {
+        const typingTextElement = document.getElementById("typing-text");
+        if (typingTextElement && i < text.length) {
+            typingTextElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    const typingTextElement = document.getElementById("typing-text");
+    if (typingTextElement) {
+        typingTextElement.innerHTML = "";
+        typeWriter();
+    }
+});
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,rw'}, 'google_translate_element');

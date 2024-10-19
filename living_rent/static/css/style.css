@@ -5,37 +5,62 @@ body {
 }
 
 
-/* Ensure the dropdown container is positioned relative */
+/* Navbar should allow content to overflow */
+.navbar {
+    overflow: visible;
+    z-index: 1000;
+    position: fixed; /* Keep navbar fixed at the top */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;  /* Ensure space between logo and menu */
+    align-items: center;
+    background: #007bff;
+    padding: 0.5em 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 0;
+}
+
+.menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 0.0em;  /* Space between logo and menu icon */
+    position: absolute;  /* No fixed positioning, let flexbox handle layout */
+    z-index: 1100;
+}
+/* Dropdown container should be relatively positioned */
 .dropdown {
     position: relative;
 }
 
-/* Adjust the dropdown menu positioning */
+/* Dropdown menu is positioned absolutely relative to the dropdown container */
 .dropdown-menu {
-    position: absolute;
-    top: 100%; /* Position the dropdown below the button */
-    left: 0;
-    z-index: 1050;
-    display: none; /* Hide the dropdown by default */
-    float: left;
-    min-width: 10rem;
-    padding: 0.5rem 0;
-    margin: 0.125rem 0 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
+    position: absolute;  /* Ensure dropdown is positioned absolutely */
+    z-index: 1050;  /* Higher than navbar content */
+    top: 100%;  /* Below the button */
+    left: 0;  /* Align with button */
+    display: none;  /* Initially hidden */
     background-color: #fff;
-    background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* Show the dropdown menu on hover */
+
+/* Show the dropdown menu when hovered */
 .dropdown:hover .dropdown-menu {
-    display: block; /* Show the dropdown when hovering over the button */
+    display: block;
 }
 
+/* Higher z-index for dropdowns */
+.dropdown-menu {
+    z-index: 1050;
+}
+
+
+/* Additional styling for the properties button */
 .properties-button {
     background: rgb(154, 204, 235); /* Match the header color */
     border: none;
@@ -45,32 +70,21 @@ body {
 }
 
 .properties-button:hover {
-    background: #007bff; /* Optional: Change color on hover */
+    background: #007bff;
     color: white;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    z-index: 999;
-    justify-content: space-between;
-    background: rgb(154, 204, 235);
-    color: black;
-    padding: 0.5em 1em; /* Adjust padding as needed */
-    border-bottom: 5px solid white; /* Adds a white border at the bottom */
-}
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 3em;
 }
 
 .logo {
-    height: 60px; /* Adjust the height as needed */
+    height: 60px;
     margin-right: 10px;
     border-radius: 200px;
-    
 }
 
 .company-name {
@@ -153,7 +167,7 @@ nav ul li a:hover {
     justify-content: space-between;
     display: flex;
     align-items: left;
-    background: rgb(154, 204, 235);;
+    background: #007bff;
     color: #fff;
     text-align: center;
     padding: 1em;
@@ -167,18 +181,18 @@ nav ul li a:hover {
 }
 
 .facebook-icon {
-    color: #3b5998; /* Facebook blue */
+    color: hsl(0, 0%, 100%); /* Facebook blue */
 }
 
 .twitter-icon {
-    color: #1da1f2; /* Twitter blue */
+    color: hsl(0, 0%, 100%); /* Twitter blue */
 }
 
 .instagram-icon {
     color: #e1306c; /* Instagram pink */
 }
 .linkedin-icon {
-    color: #0077b5; /* LinkedIn blue */
+    color: hsl(0, 0%, 100%); /* LinkedIn blue */
 }
 
 .custom-height {
@@ -198,7 +212,7 @@ nav ul li a:hover {
 
 .messages li.success {
     background-color: #d4edda;
-    color: #155724;
+    color: #01300c;
     border: 1px solid #c3e6cb;
 }
 
@@ -604,28 +618,17 @@ nav ul li a:hover {
     height: auto;
 }
 
-/* Add these styles to your existing CSS file */
-.menu-icon {
-    position: fixed;
-    top: 20px;
-    left: 5px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    margin-right: 20px;
-}
-
 .sidebar {
     position: fixed;
     left: -260px;
-    border-radius: 10px;
     top: 0;
     width: 250px;
     height: 100%;
-    background-color: rgb(154, 204, 235);
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    background-color: #007bff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
+    z-index: 1200;
+    border-radius: 15px;
 }
 
 .sidebar.open {
@@ -646,3 +649,52 @@ nav ul li a:hover {
     border-radius: 50%;
     padding: 5px 10px;
 }
+
+.property-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #bbb; /* Darker border color for better visibility */
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    position: relative;
+    background-color: #f5f5f5; /* Lighter background color */
+    margin-bottom: 20px;
+    padding: 20px;
+    height: 250px;
+}
+
+
+
+.property-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-card img {
+    width: 100%;
+    height: auto;
+}
+
+.icon-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-container i {
+    margin-right: 5px;
+}
+
+.card-body {
+    margin-top: 50px; /* Add space between the icon container and the card body */
+}
+
+.btn-primary {
+    margin-top: 20px; /* Add space above the button */
+}
+

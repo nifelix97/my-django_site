@@ -5,6 +5,24 @@ from django.contrib.auth.decorators import user_passes_test
 from .models import House, StudentApplication, Parcel, Car, CarApplication, Apartment, Notification
 from .forms import StudentApplicationForm, ParcelApplicationForm, ParcelApplication, CarApplicationForm, ApartmentForm
 
+def property_list(request):
+    cars_for_rent = Car.objects.filter(rent__gt=0)
+    cars_for_sale = Car.objects.filter(sale_price__gt=0)
+    apartments = Apartment.objects.all()
+    parcels = Parcel.objects.all()
+    offices = Apartment.objects.filter(type='OFFICE')
+    houses = House.objects.all()  # Fetch houses
+
+    context = {
+        'cars_for_rent': cars_for_rent,
+        'cars_for_sale': cars_for_sale,
+        'apartments': apartments,
+        'parcels': parcels,
+        'offices': offices,
+        'houses': houses,  # Add houses to context
+    }
+    return render(request, 'house_renting/property_list.html', context)
+
 def create_notification(message):
     Notification.objects.create(message=message)
 
